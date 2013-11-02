@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<robot name="spatula">
+  <link name="spatula_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.2" radius="0.02"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <mass value="0.3"/>
+      <inertia ixx="0.04" ixy="0.0" ixz="0.0" iyy="0.04" iyz="0.0" izz="0.02"/>
+      
+    </inertial>
+    <collision>
+       <geometry>
+          <cylinder length="0.2" radius="0.02"/>
+       </geometry>
+    </collision>
+    
+  </link>
+  <gazebo reference="spatula_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <turnGravityOff>true</turnGravityOff> 
+    <material>Gazebo/Blue</material>
+    
+  </gazebo>
+  <link name="spatula_head">  
+    <visual>
+      <geometry>
+         <box size="0.1 0.01 0.1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz = "0 0 0.05"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.1 0.01 0.1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.05"/>
+    </collision>
+    <inertial>
+       <mass value="0.3"/>
+       <inertia ixx="0.04" ixy="0" ixz="0" iyy="0.04" iyz="0" izz="0.02"/>
+    </inertial>    
+  </link>
+  <gazebo reference="spatula_head">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <material>Gazebo/Blue</material>
+  </gazebo>
+  <joint name="spatula_connect" type="fixed">
+     <parent link="spatula_link"/>
+     <child link ="spatula_head"/>
+     <origin xyz="0 0 0.1"/>
+  </joint>
+</robot>
+

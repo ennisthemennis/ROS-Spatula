@@ -1,0 +1,15 @@
+<launch>
+	<arg name="model" default="spatula.urdf" />
+	<arg name="gui" default="False" />
+	<param name="robot_description" textfile="$(arg model)" />
+	<param name="use_gui" value="$(arg gui)"/>
+	<node name="robot_state_publisher2" pkg="robot_state_publisher" type="state_publisher" />
+
+<node name="rviz" pkg="rviz" type="rviz" args="-d $(find spatulasss)/urdf.vcg" />
+
+<node pkg="spatulasss" type="fixed_tf.py" name="spatula_fixed" />
+<!--
+<param name="spatula" textfile="$(find spatulasss)/spatula.urdf" />
+<node name="spawn_spatula" pkg="gazebo" type="spawn_model" args="-urdf -param spatula -z 2 -model spatula -reference_frame world" />
+-->
+</launch>
