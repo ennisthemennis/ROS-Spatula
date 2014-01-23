@@ -9,5 +9,5 @@ if __name__ == '__main__':
     br = tf.TransformBroadcaster()
     rate = rospy.Rate(10.0)
     while not rospy.is_shutdown():
-       br.sendTransform((0.01, -0.03, 0.05), (0.0, 0.0, 0.0, 1.0), rospy.Time.now(), "spatula_link", "l_gripper_l_finger_tip_link")
+       br.sendTransform((0.001, -0.002, 0.025), (0.0, 0.0, 0.0, 1.0), rospy.Time.now(), "spatula_link", "l_gripper_tool_frame")
        rate.sleep()
